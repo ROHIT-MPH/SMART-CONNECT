@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="CONTACT")
@@ -14,12 +15,22 @@ public class Contact {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int cID;
+	private int cid;
+	
+	@NotBlank(message ="Name field is required!")
 	private String name;
+	
 	private String secondName;
+	
 	private String work;
+	
+	@NotBlank(message ="Email field is required!")
 	private String email;
+	
+	@NotBlank(message ="Phone field is required!")	
 	private String phone;
+	
+	
 	private String image;
 	@Column(length = 5000)
 	private String description;
@@ -28,11 +39,11 @@ public class Contact {
 	private User user;
 
 	
-	public int getcID() {
-		return cID;
+	public int getcid() {
+		return cid;
 	}
-	public void setcID(int cID) {
-		this.cID = cID;
+	public void setcID(int cid) {
+		this.cid = cid;
 	}
 	public String getName() {
 		return name;
@@ -82,8 +93,11 @@ public class Contact {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-	
+//	@Override
+//	public String toString() {
+//		return "Contact [cid=" + cid + ", name=" + name + ", secondName=" + secondName + ", work=" + work + ", email="
+//				+ email + ", phone=" + phone + ", image=" + image + ", description=" + description + ", user=" + user
+//				+ "]";
+//	}	
 	
 }
